@@ -13,6 +13,15 @@ const candyColors = [
 ]
 
 const App = () => {
+  const createBoard = () => {
+    /*to create the random board of different 64 items we need to run a for loop. 
+    Its time we increment we are going to get a different color*/
+    for(let i=0; i< width * width; i++){
+      //we are speeding up a different number of colors
+      //so to get a random color passing a random number from 0 to five to candyColors array and then return either yellow, red, orange or purple
+        const randomColor = candyColors[Math.floor(Math.random() * candyColors.length)]
+    }
+  }
   return (
     <div>Hello There! We are back !!!</div>
   )
