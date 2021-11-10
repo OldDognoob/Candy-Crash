@@ -36,7 +36,7 @@ const App = () => {
     setCurrentColorArrangement(randomColorArrangement)
    
   }
-  // we are using useEffect to tell react after is 
+
   useEffect(() => {
     createBoard();
   },[])
@@ -44,7 +44,19 @@ const App = () => {
   console.log(currentColorArrangement);
 
   return (
-    <div></div>
+    <div className="app">
+        <div className="game">
+          {currentColorArrangement.map((candyColor, index :number)=>
+          // eslint-disable-next-line jsx-a11y/alt-text
+          <img 
+          
+          key={index}
+          style={{backgroundColor: candyColor}}
+          />
+
+          )}
+        </div>
+    </div>
   )
 }
 export default App;
