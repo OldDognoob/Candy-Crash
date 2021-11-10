@@ -36,7 +36,7 @@ const App = () => {
     setCurrentColorArrangement(randomColorArrangement)
    
   }
-  
+  // we are using useEffect to tell react after is 
   useEffect(() => {
     createBoard();
   },[])
