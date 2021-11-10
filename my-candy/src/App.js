@@ -1,4 +1,5 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
+
 
 /*Creating a board for the game by using 8 as width and 8 as height.
 In order to play we need 64 different colors. 
@@ -35,10 +36,13 @@ const App = () => {
     setCurrentColorArrangement(randomColorArrangement)
    
   }
-  createBoard();
+  
+  useEffect(() => {
+    createBoard();
+  },[])
 
   console.log(currentColorArrangement);
-  
+
   return (
     <div></div>
   )
