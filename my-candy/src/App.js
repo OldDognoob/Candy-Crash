@@ -1,4 +1,6 @@
+/* eslint-disable no-unused-vars */
 import {useState, useEffect} from 'react';
+import blank from './images/blank.png';
 
 
 /*Creating a board for the game by using 8 as width and 8 as height.
@@ -21,6 +23,22 @@ const candyColors = [
 const App = () => {
   //useState to set up in an empty array
   const[currentColorArrangement, setCurrentColorArrangement]= useState([]);
+  const [scoreDisplay, setScoreDisplay] = useState(0)
+
+  //create function checkForColumnOfThree
+  const checkForColumnOfThree = () => {
+    for (let i = 0; i <= 47; i++) {
+        const columnOfThree = [i, i + width, i + width * 2]
+        const decidedColor = currentColorArrangement[i]
+        const isBlank = currentColorArrangement[i] === blank
+
+        if (columnOfThree.every(square => currentColorArrangement[square] === decidedColor && !isBlank)) {
+            setScoreDisplay((score) => score + 3)
+            columnOfThree.forEach(square => currentColorArrangement[square] = blank)
+            return true
+        }
+    }
+}
 
   const createBoard = () => {
     // each time we get a random color, we need to be above the loop because every time we are looping we will get the random color arrangement 
@@ -41,7 +59,12 @@ const App = () => {
     createBoard();
   },[])
 
-  console.log(currentColorArrangement);
+useEffect(()=>{
+  const timer = setInterval(()=>{
+    checkForColumnOfThree()
+  },100)
+  return ( ) => clearInterval(timer)
+}, [checkForColumnOfThree, currentColorArrangement])
 
   return (
     <div className="app">
@@ -51,6 +74,7 @@ const App = () => {
           <img 
           key={index}
           style={{backgroundColor: candyColor}}
+          alt={candyColor}
           />
 
           ))}
