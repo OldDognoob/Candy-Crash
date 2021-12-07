@@ -46,17 +46,20 @@ const App = () => {
   return (
     <div className="app">
         <div className="game">
-          {currentColorArrangement.map((candyColor, index :number)=>
+          {currentColorArrangement.map((candyColor, index )=>(
           // eslint-disable-next-line jsx-a11y/alt-text
           <img 
-          
           key={index}
           style={{backgroundColor: candyColor}}
           />
 
-          )}
+          ))}
         </div>
     </div>
   )
 }
 export default App;
+
+/*line:51 Create an image for every single item in the current color in the arrangement array*/
+/*line 49-57:Getting the current color arrangement array i called the item candy color and for each item I want the index of it
+and I mapping that into an image element. If candy color has a string blue then I signed the candy color to this color */
